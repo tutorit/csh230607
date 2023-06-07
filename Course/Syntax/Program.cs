@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Syntax;
 
 static void NumberGame()
 {
@@ -22,5 +23,47 @@ static void NumberGame()
     Console.WriteLine($"You got it in {numGuesses} guesses!");
 }
 
-NumberGame();
+static void ListDemo()
+{
+    string weekdays = "Mon,Tue,Wed,Thu,Fri";
+    string[] wda = weekdays.Split(',');
+    foreach (string w in wda) Console.WriteLine(w);
+    List<string> wdl = new List<string>(wda);
+    foreach (string d in wdl) Console.WriteLine(d);
+    Console.WriteLine(wda[^1]+":"+wdl[1]);
+    wdl.RemoveAt(0);
+    wdl.Insert(0, "Sun");
+    foreach (string d in wdl) Console.WriteLine(d);
+}
 
+static void Swap(ref int a,ref int b)
+{
+    int c = a;
+    a = b;
+    b = c;
+}
+
+unsafe void TestDangerous(int* pi)
+{
+
+}
+
+Vector v = new(2,5);
+v.i = 12;
+Console.WriteLine("i=" + v.i+", "+v.j);
+/*
+//NumberGame();
+ListDemo();
+int x = 1, y = 2;
+Swap(ref x,ref  y);
+Console.WriteLine($"{x},{y}");
+*/
+/*
+int i = 32;
+var j = 43;
+//j = "Hello";
+dynamic k = "Hello";
+Console.WriteLine("Type of k " + k.GetType());
+k = 32;
+Console.WriteLine("Type of k " + k.GetType());
+*/
