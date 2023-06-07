@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace Syntax
 {
+
+    record Customer(string name,double purchases)
+    {
+        public bool Active { get; set; }
+    }
+
     internal class Person
     {
         private string _name="Unnamed";
@@ -36,6 +42,12 @@ namespace Syntax
             {
                 if (!string.IsNullOrEmpty(value)) _name = value;
             }
+        }
+
+        public void Deconstruct(out string name,out string email)
+        {
+            name = Name;
+            email = Email;
         }
 
         public string Email

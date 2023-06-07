@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Syntax
 {
-    internal class Vector
+    internal struct Vector
     {
         private int _i=3;
         public int j { get; set ; }
@@ -24,7 +24,7 @@ namespace Syntax
 
         public Vector(int i=0,int j = 0)
         {
-            this.i = i;
+            _i = i;
             this.j = j;
         }
     }

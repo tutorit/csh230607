@@ -49,9 +49,26 @@ unsafe void TestDangerous(int* pi)
 
 }
 
+static void ShowAndIncrement(ref Vector v)
+{
+    v.i++;
+    v.j++;
+    Console.WriteLine("Vector " + v.i + "," + v.j);
+}
+
+static void PersonModifier(Person p)
+{
+    p.Name += " mod";
+}
 static void PersonTester()
 {
     Person p = new Person("Mike","mike@monroe.net","1.6.1990");
+    Person p2 = new Person("Mike", "mike@monroe.net", "1.6.1990");
+
+    (string n, string e) = p;
+    Console.WriteLine("Deconstructed " + n + "," + e);
+    Console.WriteLine("Persons are same " + (p == p2));
+    PersonModifier(p);
     Console.WriteLine(p.Name+","+p.Email+","+p.BirthdayString);
     p.BirthdayString = "6.7.1990";
     p.Name = "";
@@ -66,6 +83,15 @@ static void PersonTester()
 }
 
 PersonTester();
+Vector v = new(5, 6);
+ShowAndIncrement(ref v);
+Console.WriteLine("Vector at main:" + v.i + "," + v.j);
+
+Customer c = new Customer("Coders Unlimited", 4500);
+Customer c2 = new Customer("Coders Unlimited", 4500);
+c2.Active = false;
+Console.WriteLine("Cust " + c+", same "+(c==c2));
+Customer c3 = c2 with { name = "Testers limited" };
 
 /*
 Vector v = new(2,5);
