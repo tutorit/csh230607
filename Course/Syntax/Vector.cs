@@ -9,8 +9,7 @@ namespace Syntax
     internal class Vector
     {
         private int _i=3;
-        public int j { get; init ; }
-
+        public int j { get; set ; }
         public int i
         {
             get

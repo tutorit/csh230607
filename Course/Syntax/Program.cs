@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Syntax;
+using System.Reflection.Metadata;
 
 static void NumberGame()
 {
@@ -48,9 +49,29 @@ unsafe void TestDangerous(int* pi)
 
 }
 
+static void PersonTester()
+{
+    Person p = new() {Name="Mike",Email="mike@monroe.net" };
+    Console.WriteLine(p.Name+","+p.Email+","+p.BirthdayString);
+    p.BirthdayString = "6.7.1990";
+    p.Name = "";
+    Console.WriteLine(p.Name + "," + p.Email + "," + p.BirthdayString);
+
+    DateTime bd = DateTime.Parse("1.2.1970");
+    Console.WriteLine(bd.ToShortDateString());
+    DateOnly dt = DateOnly.Parse("1.2.1980");
+    Console.WriteLine(bd.ToString() + ":" + dt.ToString());
+    p.Birthday = dt;
+    Console.WriteLine(p.Birthday);
+}
+
+PersonTester();
+
+/*
 Vector v = new(2,5);
 v.i = 12;
 Console.WriteLine("i=" + v.i+", "+v.j);
+/
 /*
 //NumberGame();
 ListDemo();
