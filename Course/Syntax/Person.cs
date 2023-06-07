@@ -12,6 +12,20 @@ namespace Syntax
         private string _email = "";
         private DateOnly? _birthday=null;
 
+        public Person(string name,string email="",DateOnly? bd = null)
+        {
+            Name = name;
+            Email = email;
+            Birthday = bd;
+        }
+
+        public Person(string name,string email,string bd)
+        {
+            Name = name;
+            Email = email;
+            BirthdayString = bd;
+        }
+
         public string Name
         {
             get

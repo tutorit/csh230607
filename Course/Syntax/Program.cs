@@ -51,7 +51,7 @@ unsafe void TestDangerous(int* pi)
 
 static void PersonTester()
 {
-    Person p = new() {Name="Mike",Email="mike@monroe.net" };
+    Person p = new Person("Mike","mike@monroe.net","1.6.1990");
     Console.WriteLine(p.Name+","+p.Email+","+p.BirthdayString);
     p.BirthdayString = "6.7.1990";
     p.Name = "";
