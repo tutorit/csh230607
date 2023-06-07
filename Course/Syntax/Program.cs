@@ -69,10 +69,12 @@ static void PersonTester()
     Console.WriteLine("Deconstructed " + n + "," + e);
     Console.WriteLine("Persons are same " + (p == p2));
     PersonModifier(p);
-    Console.WriteLine(p.Name+","+p.Email+","+p.BirthdayString);
+    //Console.WriteLine(p.Name+","+p.Email+","+p.BirthdayString);
+    Console.WriteLine(p);
     p.BirthdayString = "6.7.1990";
     p.Name = "";
-    Console.WriteLine(p.Name + "," + p.Email + "," + p.BirthdayString);
+    //Console.WriteLine(p.Name + "," + p.Email + "," + p.BirthdayString);
+    Console.WriteLine(p);
 
     DateTime bd = DateTime.Parse("1.2.1970");
     Console.WriteLine(bd.ToShortDateString());
@@ -82,35 +84,33 @@ static void PersonTester()
     Console.WriteLine(p.Birthday);
 }
 
-PersonTester();
-Vector v = new(5, 6);
-ShowAndIncrement(ref v);
-Console.WriteLine("Vector at main:" + v.i + "," + v.j);
+static void ClassesStructsAndRecords()
+{
+    PersonTester();
+    Vector v = new(5, 6);
+    ShowAndIncrement(ref v);
+    Console.WriteLine("Vector at main:" + v.i + "," + v.j);
 
-Customer c = new Customer("Coders Unlimited", 4500);
-Customer c2 = new Customer("Coders Unlimited", 4500);
-c2.Active = false;
-Console.WriteLine("Cust " + c+", same "+(c==c2));
-Customer c3 = c2 with { name = "Testers limited" };
+    Customer c = new Customer("Coders Unlimited", 4500);
+    Customer c2 = new Customer("Coders Unlimited", 4500);
+    c2.Active = false;
+    Console.WriteLine("Cust " + c + ", same " + (c == c2));
+    Customer c3 = c2 with { name = "Testers limited" };
+}
 
-/*
-Vector v = new(2,5);
-v.i = 12;
-Console.WriteLine("i=" + v.i+", "+v.j);
-/
-/*
+//ClassesStructsAndRecords();
+
+static void ShowIt(Person p)
+{
+    p.DoSomeWork();
+    Console.WriteLine(p);
+}
+
+Employee e = new("Emil",3200);
+Person p = new("Mike");
+
+ShowIt(e);
+ShowIt(p);
+
 //NumberGame();
-ListDemo();
-int x = 1, y = 2;
-Swap(ref x,ref  y);
-Console.WriteLine($"{x},{y}");
-*/
-/*
-int i = 32;
-var j = 43;
-//j = "Hello";
-dynamic k = "Hello";
-Console.WriteLine("Type of k " + k.GetType());
-k = 32;
-Console.WriteLine("Type of k " + k.GetType());
-*/
+//ListDemo();

@@ -18,6 +18,8 @@ namespace Syntax
         private string _email = "";
         private DateOnly? _birthday=null;
 
+        //public Person() { }
+
         public Person(string name,string email="",DateOnly? bd = null)
         {
             Name = name;
@@ -94,6 +96,16 @@ namespace Syntax
             {
                 return DateTime.Now.Year - Birthday?.Year;
             }
+        }
+
+        virtual public void DoSomeWork()
+        {
+            Console.WriteLine("No, I'm too lazy");
+        }
+
+        public override string ToString()
+        {
+            return Name + "," + Email + "," + BirthdayString;
         }
     }
 }
