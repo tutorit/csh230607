@@ -17,6 +17,8 @@ namespace Syntax
         private string _name="Unnamed";
         private string _email = "";
         private DateOnly? _birthday=null;
+        public int Id { get; init; }
+        public static int NextId { get; private set; } =1;
 
         //public Person() { }
 
@@ -25,6 +27,7 @@ namespace Syntax
             Name = name;
             Email = email;
             Birthday = bd;
+            Id = NextId++;
         }
 
         public Person(string name,string email,string bd)
@@ -32,6 +35,7 @@ namespace Syntax
             Name = name;
             Email = email;
             BirthdayString = bd;
+            Id = NextId++;
         }
 
         public string Name
@@ -105,7 +109,7 @@ namespace Syntax
 
         public override string ToString()
         {
-            return Name + "," + Email + "," + BirthdayString;
+            return Name+"("+Id+")," + Email + "," + BirthdayString;
         }
     }
 }

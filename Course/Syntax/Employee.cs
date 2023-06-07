@@ -22,7 +22,7 @@ namespace Syntax
 
         public override string ToString()
         {
-            return Name+" earns "+Salary+" EUR/month";
+            return Name+","+Id+" earns "+Salary+" EUR/month";
         }
     }
 }

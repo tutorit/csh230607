@@ -111,6 +111,7 @@ Person p = new("Mike");
 
 ShowIt(e);
 ShowIt(p);
+Console.WriteLine("We have " + (Person.NextId-1) + " Persons");
 
 //NumberGame();
 //ListDemo();
