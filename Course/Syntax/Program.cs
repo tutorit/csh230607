@@ -106,6 +106,33 @@ static void ShowIt(Person p)
     Console.WriteLine(p);
 }
 
+static double Add(double a, double b)
+{
+    return a + b;
+}
+
+static void PrintPrice(double net, double vat, Calculate ct)
+{
+    double total = ct(net, vat);
+    Console.WriteLine($"Net {net}EUR Vat {total-net}EUR Total {total}EUR");
+}
+
+//Calculate c = Add;
+//Console.WriteLine("Sum " + c(2, 6));
+
+PrintPrice(100, 24, Add);
+PrintPrice(200, 24, delegate (double a, double b)
+{
+    return a + (a * b) / 100;
+});
+PrintPrice(300, 0.24, (a, b) => a * (1 + b));
+
+public delegate double Calculate(double a, double b);
+
+
+
+/*
+
 Employee e = new("Emil",3200);
 Person p = new("Mike");
 
@@ -126,3 +153,4 @@ Console.WriteLine(MyExtensions.Left(s, 3));
 
 Console.WriteLine(s.Left(3));
 Console.WriteLine(s.Right(3));
+*/

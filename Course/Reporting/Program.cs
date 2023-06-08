@@ -18,5 +18,11 @@ rep.EndReport("End of data");
 ScreenReporter sr = new ScreenReporter();
 FileReporter fr = new FileReporter(@"c:\data\person.txt");
 
-PersonReport pr = new PersonReport(p,fr);
+Formatter upper = (a, b) => $"{a.ToUpper()} - {b}";
+Formatter xml = (a, b) => $"<{a}>{b}</{a}>";
+Formatter columns = (a, b) => $"{a.PadRight(20)}{b}";
+
+sr.Formatter = columns;
+
+PersonReport pr = new PersonReport(p,sr);
 pr.DoReport();
