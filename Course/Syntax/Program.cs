@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Syntax;
+using System.Reflection;
 using System.Reflection.Metadata;
 
 static void NumberGame()
@@ -37,9 +38,9 @@ static void ListDemo()
     foreach (string d in wdl) Console.WriteLine(d);
 }
 
-static void Swap(ref int a,ref int b)
+static void Swap<T>(ref T a,ref T b)
 {
-    int c = a;
+    T c = a;
     a = b;
     b = c;
 }
@@ -119,13 +120,57 @@ static void PrintPrice(double net, double vat, Calculate ct)
 
 //Calculate c = Add;
 //Console.WriteLine("Sum " + c(2, 6));
-
+/*
 PrintPrice(100, 24, Add);
 PrintPrice(200, 24, delegate (double a, double b)
 {
     return a + (a * b) / 100;
 });
 PrintPrice(300, 0.24, (a, b) => a * (1 + b));
+
+
+Pair<int,string> p = new Pair<int,string>(3, "degrees");
+Console.WriteLine(p);
+
+Pair<string,string> p2 = new Pair<string,string>("Hello", "World");
+Console.WriteLine(p2);
+
+Pair<string, DateTime> p3 = new("Today", DateTime.Now);
+Console.WriteLine(p3);
+
+Console.WriteLine(p3.GetFirst());
+
+int a = 3, b = 5;
+Swap(ref a,ref b);
+
+double c = 4, d = 6;
+Swap(ref c, ref d);
+*/
+
+static void Report(object o)
+{
+    Type t = o.GetType();
+    ReportingAttribute ra = t.GetCustomAttribute<ReportingAttribute>();
+    if (ra == null)
+    {
+        Console.WriteLine("Not reportable: " + t.Name);
+        return;
+    }
+    Console.WriteLine(ra.Title);
+    foreach (PropertyInfo pi in t.GetProperties())
+    {
+        ra = pi.GetCustomAttribute<ReportingAttribute>();
+        if (ra == null) continue;
+        object val = pi.GetValue(o);
+        Console.WriteLine(ra.Title+"="+val);
+    }
+}
+
+
+Person p = new Person("Mike", "mike@monroe.net", "1.4.1990");
+Report(p);
+Company c = new Company { Name = "Coders", Address = "Some Street" };
+Report(c);
 
 public delegate double Calculate(double a, double b);
 

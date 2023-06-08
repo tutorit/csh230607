@@ -12,6 +12,7 @@ namespace Syntax
         public bool Active { get; set; }
     }
 
+    [Reporting("Person info")]
     public class Person
     {
         private string _name="Unnamed";
@@ -38,6 +39,7 @@ namespace Syntax
             Id = NextId++;
         }
 
+        [Reporting("Full name")]
         public string Name
         {
             get
@@ -82,6 +84,7 @@ namespace Syntax
             }
         }
 
+        [Reporting("Birthday")]
         public string BirthdayString
         {
             get
