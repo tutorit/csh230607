@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Reporting
 {
-    internal class PersonReport // : ScreenReporter
+    internal class PersonReport: Report
     {
         private Person data;
         private IReporter rep; //=  new FileReporter(@"c:\data\person.txt");
@@ -18,7 +18,7 @@ namespace Reporting
             this.rep = rep;
         }
 
-        public void DoReport()
+        override public void DoReport()
         {
             rep.BeginReport("Person info");
             rep.PrintData("Name", data.Name);

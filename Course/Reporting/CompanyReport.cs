@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Reporting
 {
-    internal class CompanyReport
+    internal class CompanyReport : Report
     {
         private Company data;
         private IReporter rep;
@@ -18,7 +18,7 @@ namespace Reporting
             this.rep = rep;
         }
 
-        public void DoReport()
+        override public void DoReport()
         {
             rep.BeginReport("Company Info");
             rep.PrintData("Company", data.Name);
