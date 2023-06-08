@@ -13,5 +13,8 @@ rep.PrintData("Age", p.Age);
 rep.PrintData("Birthday", p.Birthday);
 rep.EndReport("End of data");
 */
-PersonReport pr = new PersonReport(p);
+ScreenReporter sr = new ScreenReporter();
+FileReporter fr = new FileReporter(@"c:\data\person.txt");
+
+PersonReport pr = new PersonReport(p,fr);
 pr.DoReport();

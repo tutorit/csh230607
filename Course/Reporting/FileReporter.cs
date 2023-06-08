@@ -8,19 +8,29 @@ namespace Reporting
 {
     internal class FileReporter : IReporter
     {
+        private string filename;
+        private StreamWriter wr;
+        public FileReporter(string fn)
+        {
+            filename = fn;
+        }
+
         public void BeginReport(string title)
         {
-            Console.WriteLine(title);
+            wr = new StreamWriter(filename);
+            wr.WriteLine(title);
         }
 
         public void EndReport(string footer)
         {
-            Console.WriteLine(footer);
+            wr.WriteLine(footer);
+            wr.Flush();
+            wr.Close();
         }
 
         public void PrintData(string title, string data)
         {
-            Console.WriteLine($"{title}={data}");
+            wr.WriteLine($"{title}={data}");
         }
 
         public void PrintData(string title, int? data)

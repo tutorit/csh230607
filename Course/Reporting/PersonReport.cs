@@ -10,11 +10,12 @@ namespace Reporting
     internal class PersonReport // : ScreenReporter
     {
         private Person data;
-        private IReporter rep = new FileReporter(@"c:\data\person.txt");
+        private IReporter rep; //=  new FileReporter(@"c:\data\person.txt");
 
-        public PersonReport(Person data)
+        public PersonReport(Person data,IReporter rep)
         {
             this.data = data;
+            this.rep = rep;
         }
 
         public void DoReport()
