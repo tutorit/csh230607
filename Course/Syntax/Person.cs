@@ -12,7 +12,7 @@ namespace Syntax
         public bool Active { get; set; }
     }
 
-    internal class Person
+    public class Person
     {
         private string _name="Unnamed";
         private string _email = "";
