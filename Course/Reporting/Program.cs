@@ -4,6 +4,8 @@ using Reporting;
 
 Console.WriteLine("Reporting");
 
+Console.Out.WriteLine("Hello");
+
 Person p = new Person("Mike") { BirthdayString="2.4.1980"};
 /*
 Reporter rep = new Reporter();
