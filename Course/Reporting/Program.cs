@@ -7,6 +7,7 @@ Console.WriteLine("Reporting");
 Console.Out.WriteLine("Hello");
 
 Person p = new Person("Mike") { BirthdayString="2.4.1980"};
+Company c = new Company { Name = "Coders Unlimited", Address = "Bug alley 5" };
 /*
 Reporter rep = new Reporter();
 rep.BeginReport("Person info");
@@ -26,3 +27,8 @@ sr.Formatter = columns;
 
 PersonReport pr = new PersonReport(p,sr);
 pr.DoReport();
+
+FileReporter cfr = new FileReporter(@"c:\data\comp.txt");
+cfr.Formatter = columns;
+CompanyReport cr = new CompanyReport(c, cfr);
+cr.DoReport();
