@@ -55,6 +55,9 @@ Formatter columns = (a, b) => $"{a.PadRight(20)}{b}";
 Person p = new Person("Mike") { BirthdayString = "2.4.1980" };
 Company c = new Company { Name = "Coders Unlimited", Address = "Bug alley 5" };
 
+//Report.ReportEvent += cause => Console.WriteLine("First handler " + cause);
+//Report.ReportEvent += cause => Console.WriteLine("Second handler executed also");
+
 Report r1 = Report.Create(p); // PersonReport to Screen
 r1.DoReport();
 
