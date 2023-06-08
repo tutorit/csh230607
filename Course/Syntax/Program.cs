@@ -62,7 +62,7 @@ static void PersonModifier(Person p)
 }
 static void PersonTester()
 {
-    Person p = new Person("Mike","mike@monroe.net","1.6.1990");
+    Person p = new Person("Mike", "mike@monroe.net", "1.6.1990") ;
     Person p2 = new Person("Mike", "mike@monroe.net", "1.6.1990");
 
     (string n, string e) = p;
@@ -115,3 +115,14 @@ Console.WriteLine("We have " + (Person.NextId-1) + " Persons");
 
 //NumberGame();
 //ListDemo();
+
+string s = "Hello world";
+string s2 = "Hello world";
+Console.WriteLine("Strings equal " + (s == s2));
+Console.WriteLine(s.Substring(0, 3));
+Console.WriteLine(s.Substring(s.Length - 3));
+
+Console.WriteLine(MyExtensions.Left(s, 3));
+
+Console.WriteLine(s.Left(3));
+Console.WriteLine(s.Right(3));

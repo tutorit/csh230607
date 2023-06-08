@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syntax;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,14 @@ namespace Syntax
         {
             return Name+","+Id+" earns "+Salary+" EUR/month";
         }
+    }
+}
+
+
+class Superior : Employee
+{
+    public Superior(string name) : base(name, 10000)
+    {
+
     }
 }

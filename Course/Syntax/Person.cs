@@ -17,10 +17,10 @@ namespace Syntax
         private string _name="Unnamed";
         private string _email = "";
         private DateOnly? _birthday=null;
-        public int Id { get; init; }
+        public int Id { get;init; }
         public static int NextId { get; private set; } =1;
 
-        //public Person() { }
+        //public Person() {}
 
         public Person(string name,string email="",DateOnly? bd = null)
         {
