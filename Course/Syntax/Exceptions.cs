@@ -8,6 +8,45 @@ namespace Syntax
 {
     internal class Exceptions
     {
+        static int PromptForInt(string prompt)
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Write(prompt);
+                    string s = Console.ReadLine();
+                    return int.Parse(s);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine("Not a number");
+                }
+
+            }
+        }
+
+        static string LessExceptions(string s)
+        {
+            if (s == null) return "Cannot calculate null";
+            string[] parts = s.Split();
+            if (parts.Length < 3) return "Not a calculation";
+            bool bValid1 = int.TryParse(parts[0], out int f1);
+            bool bValid2 = int.TryParse(parts[2], out int f2);
+            if (!(bValid1 && bValid2)) return "Bad numbers";
+            if (f1 > 100) throw new CalculateException("Too big", f1);
+            string oper = parts[1];
+            if (oper == "+")
+            {
+                return f1 + "+" + f2 + "=" + (f1 + f2);
+            }
+            if (oper == "*")
+            {
+                return f1 + "+" + f2 + "=" + (f1 * f2);
+            }
+            return "";
+        }
+
         static string CalculateWithExceptions(string s)
         {
             string[] parts = s.Split();
@@ -55,7 +94,18 @@ namespace Syntax
 
         public static void Tester()
         {
-            Console.WriteLine(CalculateWithExceptions("1 + 2"));
+            int i=PromptForInt("Give a number:");
+            Console.WriteLine(CalculateWithExceptions("4 + 5"));
+            Console.WriteLine(LessExceptions("1 + 2"));
+            Console.WriteLine(LessExceptions("a + 2"));
+            try
+            {
+                Console.WriteLine(LessExceptions("130 + 6"));
+            }
+            catch(CalculateException cex)
+            {
+                Console.WriteLine("Caught own exception " + cex.Message + "," + cex.Figure1);
+            }
         }
 
     }

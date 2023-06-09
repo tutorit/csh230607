@@ -2,6 +2,7 @@
 using Syntax;
 using System.Reflection;
 using System.Reflection.Metadata;
+using System.Text.Json;
 
 static void NumberGame()
 {
@@ -268,7 +269,28 @@ static void ListTester()
     foreach (var x in pl.GetTuples()) Console.WriteLine(x.Name + ":" + x.Age);
 }
 
-Exceptions.Tester();
+//Exceptions.Tester();
+
+//FileHandler.WriteFile(@"c:\data\test.txt");
+/*
+using(FileHandler fh=new FileHandler(@"c:\data\test.txt"))
+{
+    while (true)
+    {
+        string s = fh.ReadLine(out bool eof);
+        Console.WriteLine(s);
+        if (eof) break;
+    }
+}
+
+Person p = new Person("Tom", "tom@jones.net", "1.2.1950");
+p.SaveXML(@"c:\data\person.xml");
+
+string json = JsonSerializer.Serialize(p);
+Console.WriteLine(json);
+*/
+
+Threads.ThreadMain();
 
 public delegate double Calculate(double a, double b);
 

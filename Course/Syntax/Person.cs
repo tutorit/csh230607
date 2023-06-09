@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Syntax
 {
@@ -18,10 +20,11 @@ namespace Syntax
         private string _name="Unnamed";
         private string _email = "";
         private DateOnly? _birthday=null;
+        [XmlAttribute]
         public int Id { get;init; }
         public static int NextId { get; private set; } =1;
 
-        //public Person() {}
+        public Person() {}
 
         public Person(string name,string email="",DateOnly? bd = null)
         {
@@ -70,7 +73,8 @@ namespace Syntax
                 //_email = value == null ? "" : value;
             }
         }
-
+        [JsonIgnore]
+        [XmlIgnore]
         public DateOnly? Birthday
         {
             get
@@ -119,5 +123,16 @@ namespace Syntax
         {
             return this.Name.CompareTo(other.Name);
         }
+
+        public void SaveXML(string fn)
+        {
+            using (StreamWriter sw = new StreamWriter(fn))
+            {
+                XmlSerializer ser = new XmlSerializer(this.GetType());
+                ser.Serialize(sw, this);
+                sw.Flush();
+            }
+        }
+
     }
 }
