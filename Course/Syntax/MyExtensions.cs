@@ -11,12 +11,12 @@ namespace Syntax
 
         static public string Left(this string s,int n)
         {
-            return s.Substring(0, 3);
+            return s.Substring(0, n);
         }
 
         static public string Right(this string s, int n)
         {
-            return s.Substring(s.Length - 3);
+            return s.Substring(s.Length - n);
         }
     }
 }

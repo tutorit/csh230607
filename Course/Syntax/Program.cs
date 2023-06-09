@@ -175,6 +175,44 @@ static void Reflection()
 
 }
 
+static void SetDemo()
+{
+    SortedSet<string> hs = new SortedSet<string>();
+    hs.Add("Mon");
+    hs.Add("Tue");
+    hs.Add("Wed");
+    hs.Add("Thu");
+    hs.Add("Mon");
+    foreach (string s in hs) Console.WriteLine(s);
+    SortedSet<Company> cs = new SortedSet<Company>();
+    cs.Add(new Company() { Name = "Coders", Address = "Featurestreet" });
+    cs.Add(new Company() { Name = "ATesters", Address = "Bugstreet" });
+    cs.Add(new Company() { Name = "Coders", Address = "Featurestreet" });
+    foreach (Company c in cs) Console.WriteLine(c.Name);
+}
+
+static void DictDemo()
+{
+    Dictionary<string, Company> cd = new Dictionary<string, Company>();
+    cd.Add("123", new Company() { Name = "Coders", Address = "Featurestreet" });
+    cd.Add("345", new Company() { Name = "ATesters", Address = "Bugstreet" });
+    //cd.Add("123", new Company() { Name = "Coders2", Address = "Featurestreet" });
+    cd["123"] = new Company() { Name = "Coders2", Address = "Featurestreet" };
+    cd["567"] = new Company() { Name = "Coders5", Address = "Featurestreet" };
+
+    Console.WriteLine(cd["123"].Name);
+
+    foreach (string key in cd.Keys) Console.WriteLine(key + " => " + cd[key].Name);
+    foreach (Company c in cd.Values) Console.WriteLine(c.Name);
+    foreach (var x in cd) Console.WriteLine(x.Key + " - " + x.Value.Name);
+}
+
+//SetDemo();
+//DictDemo();
+
+PersonList pl = new PersonList();
+pl.ShowAll();
+
 
 public delegate double Calculate(double a, double b);
 
