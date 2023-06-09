@@ -207,65 +207,69 @@ static void DictDemo()
     foreach (var x in cd) Console.WriteLine(x.Key + " - " + x.Value.Name);
 }
 
-//SetDemo();
-//DictDemo();
-
-PersonList pl = new PersonList();
-pl.ShowAll();
-
-Console.WriteLine("Some numbers");
-foreach(int n in pl.GiveSomeNumbers())
+static void PersonsAndEmployees()
 {
-    Console.WriteLine("At main: " + n);
-}
-Console.WriteLine("Indexer " + pl[2]);
-pl.PrintReverse();
+    Employee e = new("Emil", 3200);
+    Person p = new("Mike");
 
-Console.WriteLine("Reverse foreach");
-foreach (Person p in pl.Reverse()) Console.WriteLine(p);
-
-pl.SortByName();
-pl.ShowAll("___Sorted by name___");
-pl.SortByAge();
-pl.ShowAll("___Sorted by age___");
-
-Console.WriteLine("Aapo " + pl["Aapo"]);
-
-Console.WriteLine("____Difficult?_____");
-foreach(Person p in pl.OrderByNameAgeGreaterThan(50))
-{
-    Console.WriteLine(p);
+    ShowIt(e);
+    ShowIt(p);
+    Console.WriteLine("We have " + (Person.NextId - 1) + " Persons");
 }
 
-Console.WriteLine("____Seniors_____");
-foreach (string n in pl.NamesOfSeniors()) Console.WriteLine(n);
+static void Extensions()
+{
+    string s = "Hello world";
+    string s2 = "Hello world";
+    Console.WriteLine("Strings equal " + (s == s2));
 
-Console.WriteLine("___Tuples____");
-foreach (var x in pl.GetTuples()) Console.WriteLine(x.Name + ":" + x.Age);
+    Console.WriteLine(s.Substring(0, 3));
+    Console.WriteLine(s.Substring(s.Length - 3));
+
+    Console.WriteLine(MyExtensions.Left(s, 3));
+
+    Console.WriteLine(s.Left(3));
+    Console.WriteLine(s.Right(3));
+}
+
+static void ListTester()
+{
+    PersonList pl = new PersonList();
+    pl.ShowAll();
+
+    Console.WriteLine("Some numbers");
+    foreach (int n in pl.GiveSomeNumbers())
+    {
+        Console.WriteLine("At main: " + n);
+    }
+    Console.WriteLine("Indexer " + pl[2]);
+    pl.PrintReverse();
+
+    Console.WriteLine("Reverse foreach");
+    foreach (Person p in pl.Reverse()) Console.WriteLine(p);
+
+    pl.SortByName();
+    pl.ShowAll("___Sorted by name___");
+    pl.SortByAge();
+    pl.ShowAll("___Sorted by age___");
+
+    Console.WriteLine("Aapo " + pl["Aapo"]);
+
+    Console.WriteLine("____Difficult?_____");
+    foreach (Person p in pl.OrderByNameAgeGreaterThan(50))
+    {
+        Console.WriteLine(p);
+    }
+
+    Console.WriteLine("____Seniors_____");
+    foreach (string n in pl.NamesOfSeniors()) Console.WriteLine(n);
+
+    Console.WriteLine("___Tuples____");
+    foreach (var x in pl.GetTuples()) Console.WriteLine(x.Name + ":" + x.Age);
+}
+
+Exceptions.Tester();
 
 public delegate double Calculate(double a, double b);
 
 
-/*
-
-Employee e = new("Emil",3200);
-Person p = new("Mike");
-
-ShowIt(e);
-ShowIt(p);
-Console.WriteLine("We have " + (Person.NextId-1) + " Persons");
-
-//NumberGame();
-//ListDemo();
-
-string s = "Hello world";
-string s2 = "Hello world";
-Console.WriteLine("Strings equal " + (s == s2));
-Console.WriteLine(s.Substring(0, 3));
-Console.WriteLine(s.Substring(s.Length - 3));
-
-Console.WriteLine(MyExtensions.Left(s, 3));
-
-Console.WriteLine(s.Left(3));
-Console.WriteLine(s.Right(3));
-*/
