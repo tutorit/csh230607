@@ -166,14 +166,17 @@ static void Report(object o)
     }
 }
 
+static void Reflection()
+{
+    Person p = new Person("Mike", "mike@monroe.net", "1.4.1990");
+    Report(p);
+    Company c = new Company { Name = "Coders", Address = "Some Street" };
+    Report(c);
 
-Person p = new Person("Mike", "mike@monroe.net", "1.4.1990");
-Report(p);
-Company c = new Company { Name = "Coders", Address = "Some Street" };
-Report(c);
+}
+
 
 public delegate double Calculate(double a, double b);
-
 
 
 /*
