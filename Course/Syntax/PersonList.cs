@@ -86,7 +86,7 @@ namespace Syntax
             var b = a.OrderBy(p => p.Name);
             var c = b.Select(p => p.Name);
             //return from Person p in persons where p.Age > age orderby p.Name select p;
-            return persons
+            return persons.AsParallel()
                 .Where(p => p.Age > 50)
                 .OrderBy(p => p.Name)
                 .Select(p => p.Name);
