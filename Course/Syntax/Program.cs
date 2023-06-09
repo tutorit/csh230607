@@ -213,6 +213,35 @@ static void DictDemo()
 PersonList pl = new PersonList();
 pl.ShowAll();
 
+Console.WriteLine("Some numbers");
+foreach(int n in pl.GiveSomeNumbers())
+{
+    Console.WriteLine("At main: " + n);
+}
+Console.WriteLine("Indexer " + pl[2]);
+pl.PrintReverse();
+
+Console.WriteLine("Reverse foreach");
+foreach (Person p in pl.Reverse()) Console.WriteLine(p);
+
+pl.SortByName();
+pl.ShowAll("___Sorted by name___");
+pl.SortByAge();
+pl.ShowAll("___Sorted by age___");
+
+Console.WriteLine("Aapo " + pl["Aapo"]);
+
+Console.WriteLine("____Difficult?_____");
+foreach(Person p in pl.OrderByNameAgeGreaterThan(50))
+{
+    Console.WriteLine(p);
+}
+
+Console.WriteLine("____Seniors_____");
+foreach (string n in pl.NamesOfSeniors()) Console.WriteLine(n);
+
+Console.WriteLine("___Tuples____");
+foreach (var x in pl.GetTuples()) Console.WriteLine(x.Name + ":" + x.Age);
 
 public delegate double Calculate(double a, double b);
 

@@ -13,7 +13,7 @@ namespace Syntax
     }
 
     [Reporting("Person info")]
-    public class Person
+    public class Person : IComparable<Person>
     {
         private string _name="Unnamed";
         private string _email = "";
@@ -113,6 +113,11 @@ namespace Syntax
         public override string ToString()
         {
             return Name+"("+Id+")," + Email + "," + BirthdayString;
+        }
+
+        public int CompareTo(Person other)
+        {
+            return this.Name.CompareTo(other.Name);
         }
     }
 }
